@@ -11,16 +11,16 @@
 </div>
 
 ## 📑 Table of Contents
-- [🎯 Project Overview](#project-overview)
-- [📋 Requirements](#requirements)
-  - [💻 Virtual Machine Setup](#virtual-machine-setup)
-  - [⚙️ System Configuration](#system-configuration)
-  - [🔒 Security Implementation](#security-implementation)
-  - [📊 Monitoring Script](#monitoring-script)
-- [⭐ Bonus Features](#bonus-features)
-- [📤 Submission Guidelines](#submission-guidelines)
-- [📝 Evaluation Criteria](#evaluation-criteria)
-- [📚 Resources](#resources)
+- [🎯 Project Overview](#-project-overview)
+- [📋 Requirements](#-requirements)
+  - [💻 Virtual Machine Setup](#-virtual-machine-setup)
+  - [⚙️ System Configuration](#️-system-configuration)
+  - [🔒 Security Implementation](#-security-implementation)
+  - [📊 Monitoring Script](#-monitoring-script)
+- [⭐ Bonus Features](#-bonus-features)
+- [📤 Submission Guidelines](#-submission-guidelines)
+- [📝 Evaluation Criteria](#-evaluation-criteria)
+- [📚 Resources](#-resources)
 
 ## 🎯 Project Overview
 
