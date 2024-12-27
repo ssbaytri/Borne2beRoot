@@ -3,104 +3,148 @@
   <img src="https://drive.google.com/uc?id=1zFD8N-NgmxX0lTbF7wcfRiQMVel0JdHq" alt="B2BR Header" width="100%">
 </div>
 
-# Born2beRoot
+# Born2beRoot (42 School Project)
 
-This project is part of the system administration module, focusing on creating a Virtual Machine from scratch while following strict rules and specific security protocols.
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Requirements](#requirements)
+  - [Virtual Machine Setup](#virtual-machine-setup)
+  - [System Configuration](#system-configuration)
+  - [Security Implementation](#security-implementation)
+  - [Monitoring Script](#monitoring-script)
+- [Bonus Features](#bonus-features)
+- [Submission Guidelines](#submission-guidelines)
+- [Evaluation Criteria](#evaluation-criteria)
+- [Resources](#resources)
 
-## Overview
+## Project Overview
 
-Born2beRoot introduces you to the world of virtualization. The goal is to create and configure a Virtual Machine under specific instructions, implementing strict rules and security policies.
+Born2beRoot is a system administration project that introduces students to virtualization technology. The primary objective is to create and configure a Virtual Machine following specific security protocols and system requirements. This project emphasizes the importance of proper system configuration, security implementation, and basic server administration skills.
 
-## Mandatory Part Requirements
+## Requirements
 
 ### Virtual Machine Setup
-- **Virtualization Tool**: VirtualBox (or UTM if VirtualBox cannot be used)
-- **Operating System**: Latest stable version of Debian (recommended) or Rocky Linux
-- **GUI**: Forbidden to install X.org or any equivalent graphic server
-- **Authentication**: Root user + user with your login as username
+
+- **Hypervisor**: 
+  - Primary: VirtualBox
+  - Alternative: UTM (only if VirtualBox is unavailable)
+- **Operating System**: 
+  - Debian (latest stable version) - Recommended
+  - Rocky Linux (latest stable version) - Alternative option
+- **Restrictions**:
+  - No GUI installation (X.org or equivalent forbidden)
+  - Mandatory user configuration:
+    - Root user
+    - Additional user with your login as username
 
 ### System Configuration
 
-#### Partitioning
-- Minimum 2 encrypted partitions using LVM
+#### Disk Partitioning
+- Minimum two encrypted partitions using LVM
+- Specific partition structure will be verified during evaluation
 
-#### Security Protocols
-1. **SSH Service**
-   - Must run on port 4242 only
-   - Root SSH connection not allowed
+#### Network Configuration
+- SSH service configuration:
+  - Port: 4242 exclusively
+  - Root SSH login must be disabled
 
-2. **Firewall**
-   - UFW (Debian) or firewalld (Rocky) must be active on startup
-   - Only port 4242 must be open
+#### Firewall Setup
+- UFW (Debian) or firewalld (Rocky)
+  - Must be enabled at startup
+  - Only port 4242 should be open
+  - All other ports must be closed
 
-3. **Password Policy**
-   - Expires every 30 days
-   - Minimum 2 days before modification allowed
-   - Warning message 7 days before expiry
-   - Minimum 10 characters
-   - Must contain uppercase letter, lowercase letter, and number
-   - Maximum 3 consecutive identical characters
-   - Must not include username
-   - Password must have minimum 7 characters different from previous password
-   - Root password must comply with policy
+### Security Implementation
 
-4. **Sudo Configuration**
-   - Authentication limited to 3 attempts
-   - Custom error message for wrong password
-   - Archive all sudo commands (input/output) in /var/log/sudo/
-   - TTY mode enabled
-   - Secure paths restriction
+#### Password Policy
+| Requirement | Specification |
+|------------|---------------|
+| Expiration | 30 days |
+| Modification Delay | 2 days minimum |
+| Expiry Warning | 7 days before |
+| Length | 10 characters minimum |
+| Composition | Must include uppercase, lowercase, numbers |
+| Restrictions | - Max 3 consecutive identical characters |
+| | - Cannot contain username |
+| | - Minimum 7 different characters from previous password |
+| | - Applies to root password |
 
-#### System Monitoring
-Script `monitoring.sh` must display the following information every 10 minutes:
-- Operating system architecture and kernel version
-- Physical and virtual processor counts
-- RAM usage and percentage
-- Disk usage and percentage
-- CPU load percentage
-- Last reboot date and time
-- LVM status
-- Active connections count
-- User count
-- Server IPv4 and MAC address
-- Sudo command count
+#### Sudo Configuration
+- Authentication attempt limit: 3
+- Custom error message requirement
+- Command logging:
+  - Location: `/var/log/sudo/`
+  - Must include input/output
+- Additional requirements:
+  - TTY mode enabled
+  - Secure paths restricted
 
-## Bonus Part
+### Monitoring Script
 
-Only evaluated if mandatory part is perfect:
+`monitoring.sh` must display the following information every 10 minutes:
 
-1. **Advanced Partition Setup**
-   - Implement suggested partition structure
+| Metric | Description |
+|--------|-------------|
+| Architecture | OS and kernel version |
+| CPU | Physical and virtual processors |
+| Memory | RAM usage with percentage |
+| Storage | Disk usage with percentage |
+| CPU Load | Processor load percentage |
+| System | Last reboot date/time |
+| LVM | Current status |
+| Connections | Active connection count |
+| Users | Current user count |
+| Network | IPv4 and MAC addresses |
+| Sudo | Command execution count |
 
-2. **WordPress Website Setup**
+## Bonus Features
+
+*Only evaluated if mandatory part is perfectly implemented*
+
+1. **Partition Structure**
+   - Implementation of recommended partition scheme
+
+2. **WordPress Setup**
    - Lighttpd
    - MariaDB
    - PHP
 
 3. **Additional Service**
    - Must be justified during defense
-   - NGINX/Apache2 excluded
+   - NGINX/Apache2 not allowed
 
-## Submission
+## Submission Guidelines
 
-- Only `signature.txt` containing VM disk signature should be submitted
-- Signature must match VM disk during evaluation
-- Virtual Machine must not be included in repository
+- Submit only `signature.txt` containing VM disk signature
+- Signature must match during evaluation
+- Do not include the Virtual Machine in repository
 
-## Evaluation
+## Evaluation Criteria
 
-Defense will include:
-- Configuration verification
-- Understanding of chosen OS differences (apt vs. aptitude, SELinux/AppArmor)
-- Service implementation testing
+Defense will include verification of:
+- System configuration accuracy
+- Understanding of OS differences
+  - apt vs. aptitude
+  - SELinux/AppArmor functionality
+- Service implementation
 - Live system modifications
-- Script explanation and interruption demonstration
+- Script functionality and interruption handling
 
-## Important Notes
+## Resources
 
-- Password policy applies to all accounts, including root
-- All services must be properly configured and running at startup
-- Script must work without visible errors
-- Partition structure will be checked during evaluation
+### Official Documentation
+- [Official Born2beRoot Guide](https://mathieu-soysal.gitbook.io/born2beroot)
+- [42 Cursus Guide](https://42-cursus.gitbook.io/guide/rank-01/born2beroot)
 
-This project emphasizes correct implementation over additional features. All mandatory requirements must be perfectly implemented for bonus evaluation.
+### Visual Guides
+- [Project Overview Mind Map](https://miro.com/app/board/uXjVPEVHTXk=/)
+- [System Architecture Diagram](https://miro.com/app/board/uXjVP37UxCE=/)
+
+### Tutorials and Guides
+- [Comprehensive Tutorial (GitHub)](https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_EN.md)
+- [Video Tutorial](https://youtu.be/73r3JbkCVy0?si=EuYEs5bsECAAaZbQ)
+- [Notion Guide](https://suspectedoceano.notion.site/Born-to-be-root-10756b6213cd4f7ab0165159d33f52e0)
+
+---
+
+**Note**: This project emphasizes accurate implementation over additional features. All mandatory requirements must be perfectly implemented before bonus features will be evaluated.
